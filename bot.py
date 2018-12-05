@@ -1,11 +1,13 @@
 ﻿import telebot
 import bs4
+import os
 from Task import Task
 import parser
 import markups as m
 
 #main variables
-TOKEN = ''
+TOKEN = os.environ['TELEGRAM_TOKEN']
+some_api_token = os.environ['SOME_API_TOKEN']
 bot = telebot.TeleBot(TOKEN)
 task = Task()
 
@@ -78,4 +80,4 @@ def askAmount(message):
         output = parser.getTitlesFromAll(int(text), task.myFilter)
     msg = bot.send_message(chat_id, output, reply_markup=m.start_markup)
 
-bot.polling(none_stop=True)
+bot.polling(none_stop=False, interval=0, timeout=20)
