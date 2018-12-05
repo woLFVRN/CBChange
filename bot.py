@@ -1,12 +1,11 @@
 ﻿import telebot
 import bs4
-import os
 from Task import Task
 import parser
 import markups as m
 
 #main variables
-TOKEN = os.environ['TELEGRAM_TOKEN']
+TOKEN = ''
 bot = telebot.TeleBot(TOKEN)
 task = Task()
 
@@ -15,7 +14,7 @@ task = Task()
 def start_handler(message):
     if not task.isRunning:
         chat_id = message.chat.id
-        msg = bot.send_message(chat_id, 'Откуда парсить?', reply_markup=m.source_markup)
+        msg = bot.send_message(chat_id, 'Доброго времени суток! Вас приветсвует автоматизированный обменник CBChange. До конца декабря я работаю по фиксированному курсу 1 Cashbery Coin = 20 руб.', reply_markup=m.source_markup)
         bot.register_next_step_handler(msg, askSource)
         task.isRunning = True
 
