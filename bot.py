@@ -7,7 +7,6 @@ import markups as m
 
 #main variables
 TOKEN = os.environ['TELEGRAM_TOKEN']
-some_api_token = os.environ['SOME_API_TOKEN']
 bot = telebot.TeleBot(TOKEN)
 task = Task()
 
